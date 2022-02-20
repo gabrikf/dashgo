@@ -1,7 +1,7 @@
 import { useQuery, UseQueryOptions } from "react-query";
 import { api } from "../api";
 
-interface IUsersRequest {
+export interface IUsersRequest {
   users: IUser[];
 }
 
@@ -42,5 +42,5 @@ export function useUsers(page: number, options: UseQueryOptions) {
   return useQuery(["users", page], () => getUsers(page), {
     staleTime: 1000 * 60 * 10, // 1 segundo * 60 = 1 minuto * 10 = 10 min,
     ...options,
-  });
+  }) as any;
 }

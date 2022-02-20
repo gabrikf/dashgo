@@ -25,10 +25,14 @@ import Header from "../../components/Header";
 import Pagination from "../../components/Pagination";
 import SideBar from "../../components/SideBar";
 import { api } from "../../services/api";
-import { getUsers, useUsers } from "../../services/hooks/useUsers";
+import {
+  getUsers,
+  IUsersRequest,
+  useUsers,
+} from "../../services/hooks/useUsers";
 import { queryClient } from "../../services/queryClient";
 
-export default function UserList({ users }) {
+export default function UserList({ users }: IUsersRequest) {
   async function handlePrefetchUser(userId: string) {
     await queryClient.prefetchQuery(
       ["user", userId],
@@ -133,11 +137,11 @@ export default function UserList({ users }) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const { users, totalCount } = await getUsers(1);
-  return {
-    props: {
-      users,
-    },
-  };
-};
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const { users, totalCount } = await getUsers(1);
+//   return {
+//     props: {
+//       users,
+//     },
+//   };
+// };
