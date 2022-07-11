@@ -24,7 +24,7 @@ export default function Pagination({
   registersPerPage = 10,
   onPageChange,
 }: PaginationProps) {
-  const lastPage = Math.floor(totalcountOfRegisters / registersPerPage) + 1;
+  const lastPage = Math.floor(totalcountOfRegisters / registersPerPage);
 
   const previusPages =
     currentPage > 1
